@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:clickable="true"
+    android:focusable="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_height="50dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardElevation="0dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_item">
+
+        <TextView
+            android:id="@+id/txt_name_place"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Gi do"
+            android:textSize="16dp"
+            android:textColor="@android:color/black"
+            android:paddingLeft="20dp"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

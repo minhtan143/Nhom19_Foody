@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview_shop"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_width="190dp"
+    android:layout_height="200dp"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardElevation="0dp"
+    android:clickable="true">
+
+    <LinearLayout
+        android:weightSum="10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:background="@drawable/round">
+
+            <ImageView
+                android:id="@+id/image_shop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round"
+                android:scaleType="centerCrop"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txt_name_shop"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="Shop name"
+            android:paddingHorizontal="5dp"/>
+
+        <TextView
+            android:id="@+id/txt_detail_shop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="Some detail information"
+            android:paddingHorizontal="5dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
