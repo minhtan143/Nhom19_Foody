@@ -15,11 +15,11 @@ import java.util.List;
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHolder>  {
 
     private Context context;
-    private List<Shop> listShop;
+    private List<QuanAn> listQuanAn;
 
-    public ResultAdapter(Context context, List<Shop> listShop) {
+    public ResultAdapter(Context context, List<QuanAn> listQuanAn) {
         this.context = context;
-        this.listShop = listShop;
+        this.listQuanAn = listQuanAn;
     }
 
     @Override
@@ -32,23 +32,23 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.txtDistanceShop.setText(String.valueOf(listShop.get(position).getDistance())  + "km");
-        holder.txtAddressShop.setText((listShop.get(position).getAddress()));
-        holder.txtRateShop.setText(String.valueOf(listShop.get(position).getRate()));
-        holder.txtNameShop.setText(listShop.get(position).getName());
-        holder.imgShop.setImageResource(listShop.get(position).getThumbnail());
-        holder.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onClick(View view, int position, boolean isLongClick) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                context.startActivity(intent);
-            }
-        });
+//        holder.txtDistanceShop.setText(String.valueOf(listQuanAn.get(position).getDistance())  + "km");
+//        holder.txtAddressShop.setText((listQuanAn.get(position).getAddress()));
+//        holder.txtRateShop.setText(String.valueOf(listQuanAn.get(position).getRate()));
+//        holder.txtNameShop.setText(listQuanAn.get(position).getName());
+//        holder.imgShop.setImageResource(listQuanAn.get(position).getThumbnail());
+//        holder.setItemClickListener(new ItemClickListener() {
+//            @Override
+//            public void onClick(View view, int position, boolean isLongClick) {
+//                Intent intent = new Intent(context, DetailActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
     }
 
     @Override
     public int getItemCount() {
-        return listShop.size();
+        return listQuanAn.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

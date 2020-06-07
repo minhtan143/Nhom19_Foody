@@ -13,11 +13,11 @@ import java.util.List;
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.MyViewHolder> {
 
     private Context context;
-    private List<String> listPlace;
+    private List<TinhThanh> listTinhThanh;
 
-    public PlaceAdapter (Context context, List<String> listPlace) {
+    public PlaceAdapter (Context context, List<TinhThanh> listTinhThanh) {
         this.context = context;
-        this.listPlace = listPlace;
+        this.listTinhThanh = listTinhThanh;
     }
 
 
@@ -31,12 +31,12 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.txtPlaceName.setText(listPlace.get(position));
+        //holder.txtPlaceName.setText(listPlace.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return listPlace.size();
+        return listTinhThanh.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

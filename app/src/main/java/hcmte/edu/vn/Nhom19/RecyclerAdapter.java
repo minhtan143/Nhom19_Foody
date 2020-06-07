@@ -15,11 +15,11 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
 
     private Context context;
-    private List<Shop> listShop;
+    private List<QuanAn> listQuanAn;
 
-    public RecyclerAdapter (Context context, List<Shop> listShop) {
+    public RecyclerAdapter (Context context, List<QuanAn> listQuanAn) {
         this.context = context;
-        this.listShop = listShop;
+        this.listQuanAn = listQuanAn;
     }
 
     @Override
@@ -32,14 +32,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.txtShopName.setText(listShop.get(position).getName());
-        holder.txtShopDetail.setText(listShop.get(position).getDetail());
-        holder.imageShop.setImageResource(listShop.get(position).getThumbnail());
+//        holder.txtShopName.setText(listQuanAn.get(position).getName());
+//        holder.txtShopDetail.setText(listQuanAn.get(position).getDetail());
+//        holder.imageShop.setImageResource(listQuanAn.get(position).getThumbnail());
     }
 
     @Override
     public int getItemCount() {
-        return listShop.size();
+        return listQuanAn.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

@@ -10,35 +10,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static Database database;
     TextView txtChoosePlace;
     Button btnSearch;
-    List<Shop> listShop;
+    List<QuanAn> listQuanAn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listShop = new ArrayList<>();
-        listShop.add(new Shop("Bún thịt nướng Kiều Bào", "Một cái gì đó dài hơn cái tên của nó", R.drawable.bun_thit_nuong_kieu_bao));
-        listShop.add(new Shop("Food Cô Nàng", "Một cái gì đó dài hơn cái tên của nó", R.drawable.food_co_nang));
-        listShop.add(new Shop("Kazama Restaurant", "Một cái gì đó dài hơn cái tên của nó", R.drawable.kazama_restaurant));
-        listShop.add(new Shop("Miu Tea", "Một cái gì đó dài hơn cái tên của nó", R.drawable.miutea));
-        listShop.add(new Shop("Osaka Sushi", "Một cái gì đó dài hơn cái tên của nó", R.drawable.osaka_suisi));
-        listShop.add(new Shop("Phú Vang", "Một cái gì đó dài hơn cái tên của nó", R.drawable.phuvang));
-        listShop.add(new Shop("Quê Nhà quán", "Một cái gì đó dài hơn cái tên của nó", R.drawable.que_nha_quan));
-        listShop.add(new Shop("The Coffee", "Một cái gì đó dài hơn cái tên của nó", R.drawable.the_coffee));
-        listShop.add(new Shop("Ty Thy", "Một cái gì đó dài hơn cái tên của nó", R.drawable.ty_thy));
-        listShop.add(new Shop("Viva Star Coffee", "Một cái gì đó dài hơn cái tên của nó", R.drawable.viva_star_coffee));
+        database = new Database(this, "Foody.sqlite", null, 1);
 
+        listQuanAn = database.GetQuanAn("ABC");
 
         RecyclerView myRecycler =(RecyclerView) findViewById(R.id.recyclerview_list_shop);
-        RecyclerAdapter myAdapter = new RecyclerAdapter(this, listShop);
+        RecyclerAdapter myAdapter = new RecyclerAdapter(this, listQuanAn);
         myRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         myRecycler.setAdapter(myAdapter);
 

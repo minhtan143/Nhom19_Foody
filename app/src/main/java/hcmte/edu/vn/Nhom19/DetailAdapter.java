@@ -15,9 +15,9 @@ import java.util.List;
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHolder> {
 
     private Context context;
-    private List<Food> listFood;
+    private List<ThucDon> listFood;
 
-    public DetailAdapter(Context context, List<Food> listFood) {
+    public DetailAdapter(Context context, List<ThucDon> listFood) {
         this.context = context;
         this.listFood = listFood;
     }
@@ -35,14 +35,14 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.txtName.setText(listFood.get(position).getName());
-        holder.imgFood.setImageResource(listFood.get(position).getThumbnail());
-        holder.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onClick(View view, int position, boolean isLongClick) {
-
-            }
-        });
+//        holder.txtName.setText(listFood.get(position).getName());
+//        holder.imgFood.setImageResource(listFood.get(position).getThumbnail());
+//        holder.setItemClickListener(new ItemClickListener() {
+//            @Override
+//            public void onClick(View view, int position, boolean isLongClick) {
+//
+//            }
+//        });
     }
 
     @Override
