@@ -27,7 +27,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        listQuanAn = MainActivity.database.GetQuanAn("ABC");
+        listQuanAn = MainActivity.database.GetQuanAn(1);
 
         RecyclerView myRecycler =(RecyclerView) findViewById(R.id.recycleview_list_shop_result);
         ResultAdapter myAdapter = new ResultAdapter(this, listQuanAn);

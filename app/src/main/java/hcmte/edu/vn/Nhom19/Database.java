@@ -23,51 +23,125 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { }
 
-    public void QueryData(String sql) {
+    private void QueryData(String sql) {
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql);
     }
 
-    public Cursor GetData(String sql) {
+    private Cursor GetData(String sql) {
         SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(sql, null);
     }
 
-    public List<QuanAn> GetQuanAn(String maTinhThanh) {
+    public List<QuanAn> GetQuanAn() {
         List<QuanAn> listQuanAn = new ArrayList<>();
+
+        Cursor cursor = GetData("SELECT * FROM QuanAn");
+        while (cursor.moveToNext()) {
+            listQuanAn.add(new QuanAn(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getBlob(5),
+                    cursor.getInt(6)
+            ));
+        }
+
+        return listQuanAn;
+    }
+
+    public List<QuanAn> GetQuanAn(int maTinhThanh) {
+        List<QuanAn> listQuanAn = new ArrayList<>();
+
+        Cursor cursor = GetData("SELECT * FROM QuanAn WHERE MaTinh = " + maTinhThanh);
+        while (cursor.moveToNext()) {
+            listQuanAn.add(new QuanAn(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getBlob(5),
+                    cursor.getInt(6)
+            ));
+        }
+
         return listQuanAn;
     }
 
     public List<TinhThanh> GetTinhThanh() {
-        List<TinhThanh> listQuanAn = new ArrayList<>();
-        return listQuanAn;
+        List<TinhThanh> listTinhThanh = new ArrayList<>();
+
+        Cursor cursor = GetData("SELECT * FROM TinhThanh");
+        while (cursor.moveToNext()) {
+            listTinhThanh.add(new TinhThanh(
+                    cursor.getInt(0),
+                    cursor.getString(1)
+            ));
+        }
+
+        return listTinhThanh;
     }
 
-    public List<ThucDon> GetThucDon(String maQuanAn) {
-        List<ThucDon> listQuanAn = new ArrayList<>();
-        return listQuanAn;
+    public List<ThucDon> GetThucDon(int maQuanAn) {
+        List<ThucDon> listThucDon = new ArrayList<>();
+
+        Cursor cursor = GetData("SELECT * FROM ThucDon WHERE MaQuanAn = " + maQuanAn);
+        while (cursor.moveToNext()) {
+            listThucDon.add(new ThucDon(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getBlob(3),
+                    cursor.getInt(4)
+            ));
+        }
+
+        return listThucDon;
     }
 
-    public List<Wifi> GetWifi(String maQuanAn) {
-        List<Wifi> listQuanAn = new ArrayList<>();
-        return listQuanAn;
+    public List<Wifi> GetWifi(int maQuanAn) {
+        List<Wifi> listWifi = new ArrayList<>();
+
+        Cursor cursor = GetData("SELECT * FROM Wifi WHERE MaQuanAn = " + maQuanAn);
+        while (cursor.moveToNext()) {
+            listWifi.add(new Wifi(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3)
+            ));
+        }
+
+        return listWifi;
     }
 
-    public void InsertWifi(String maQuanAn, Wifi wifi) {
+    public void InsertWifi(Wifi wifi) {
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO Wifi VALUES(null, ?, ?, ?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
 
+        statement.bindString(1, wifi.getTenWifi());
+        statement.bindString(2, wifi.getMatKhau());
+        statement.bindString(3, Integer.toString(wifi.getMaQuanAn()));
+
+        statement.executeInsert();
     }
 }
 
 class QuanAn {
-    private String maQuanAn;
+    private int maQuanAn;
     private String tenQuanAn;
     private String diaChi;
     private String gioMoCua;
     private String gioDongCua;
-    private Bitmap hinhAnh;
-    private String maTinh;
+    private byte[] hinhAnh;
+    private int maTinh;
 
-    public QuanAn(String maQuanAn, String tenQuanAn, String diaChi, String gioMoCua, String gioDongCua, Bitmap hinhAnh, String maTinh) {
+    public QuanAn(int maQuanAn, String tenQuanAn, String diaChi, String gioMoCua, String gioDongCua, byte[] hinhAnh, int maTinh) {
         this.maQuanAn = maQuanAn;
         this.tenQuanAn = tenQuanAn;
         this.diaChi = diaChi;
@@ -77,11 +151,11 @@ class QuanAn {
         this.maTinh = maTinh;
     }
 
-    public String getMaQuanAn() {
+    public int getMaQuanAn() {
         return maQuanAn;
     }
 
-    public void setMaQuanAn(String maQuanAn) {
+    public void setMaQuanAn(int maQuanAn) {
         this.maQuanAn = maQuanAn;
     }
 
@@ -117,31 +191,31 @@ class QuanAn {
         this.gioDongCua = gioDongCua;
     }
 
-    public Bitmap getHinhAnh() {
+    public byte[] getHinhAnh() {
         return hinhAnh;
     }
 
-    public void setHinhAnh(Bitmap hinhAnh) {
+    public void setHinhAnh(byte[] hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
 
-    public String getMaTinh() {
+    public int getMaTinh() {
         return maTinh;
     }
 
-    public void setMaTinh(String maTinh) {
+    public void setMaTinh(int maTinh) {
         this.maTinh = maTinh;
     }
 }
 
 class ThucDon {
-    private String maThucDon;
+    private int maThucDon;
     private String tenMonAn;
     private int gia;
-    private Bitmap hinhAnh;
-    private String maQuanAn;
+    private byte[] hinhAnh;
+    private int maQuanAn;
 
-    public ThucDon(String maThucDon, String tenMonAn, int gia, Bitmap hinhAnh, String maQuanAn) {
+    public ThucDon(int maThucDon, String tenMonAn, int gia, byte[] hinhAnh, int maQuanAn) {
         this.maThucDon = maThucDon;
         this.tenMonAn = tenMonAn;
         this.gia = gia;
@@ -149,11 +223,11 @@ class ThucDon {
         this.maQuanAn = maQuanAn;
     }
 
-    public String getMaThucDon() {
+    public int getMaThucDon() {
         return maThucDon;
     }
 
-    public void setMaThucDon(String maThucDon) {
+    public void setMaThucDon(int maThucDon) {
         this.maThucDon = maThucDon;
     }
 
@@ -173,37 +247,37 @@ class ThucDon {
         this.gia = gia;
     }
 
-    public Bitmap getHinhAnh() {
+    public byte[] getHinhAnh() {
         return hinhAnh;
     }
 
-    public void setHinhAnh(Bitmap hinhAnh) {
+    public void setHinhAnh(byte[] hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
 
-    public String getMaQuanAn() {
+    public int getMaQuanAn() {
         return maQuanAn;
     }
 
-    public void setMaQuanAn(String maQuanAn) {
+    public void setMaQuanAn(int maQuanAn) {
         this.maQuanAn = maQuanAn;
     }
 }
 
 class TinhThanh {
-    private String maTinh;
+    private int maTinh;
     private String tenTinh;
 
-    public TinhThanh(String maTinh, String tenTinh) {
+    public TinhThanh(int maTinh, String tenTinh) {
         this.maTinh = maTinh;
         this.tenTinh = tenTinh;
     }
 
-    public String getMaTinh() {
+    public int getMaTinh() {
         return maTinh;
     }
 
-    public void setMaTinh(String maTinh) {
+    public void setMaTinh(int maTinh) {
         this.maTinh = maTinh;
     }
 
@@ -217,23 +291,23 @@ class TinhThanh {
 }
 
 class Wifi {
-    private String maWifi;
+    private int maWifi;
     private String tenWifi;
     private String matKhau;
-    private String maQuanAn;
+    private int maQuanAn;
 
-    public Wifi(String maWifi, String tenWifi, String matKhau, String maQuanAn) {
+    public Wifi(int maWifi, String tenWifi, String matKhau, int maQuanAn) {
         this.maWifi = maWifi;
         this.tenWifi = tenWifi;
         this.matKhau = matKhau;
         this.maQuanAn = maQuanAn;
     }
 
-    public String getMaWifi() {
+    public int getMaWifi() {
         return maWifi;
     }
 
-    public void setMaWifi(String maWifi) {
+    public void setMaWifi(int maWifi) {
         this.maWifi = maWifi;
     }
 
@@ -253,11 +327,11 @@ class Wifi {
         this.matKhau = matKhau;
     }
 
-    public String getMaQuanAn() {
+    public int getMaQuanAn() {
         return maQuanAn;
     }
 
-    public void setMaQuanAn(String maQuanAn) {
+    public void setMaQuanAn(int maQuanAn) {
         this.maQuanAn = maQuanAn;
     }
 }

@@ -1,6 +1,7 @@
 package hcmte.edu.vn.Nhom19;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +33,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-//        holder.txtShopName.setText(listQuanAn.get(position).getName());
-//        holder.txtShopDetail.setText(listQuanAn.get(position).getDetail());
-//        holder.imageShop.setImageResource(listQuanAn.get(position).getThumbnail());
+        holder.txtShopName.setText(listQuanAn.get(position).getTenQuanAn());
+        holder.txtShopDetail.setText("Cai gi do");
+        byte[] img = listQuanAn.get(position).getHinhAnh();
+        holder.imageShop.setImageBitmap(BitmapFactory.decodeByteArray(img,0, img.length));
     }
 
     @Override
@@ -55,6 +57,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             txtShopDetail = (TextView) itemView.findViewById(R.id.txt_detail_shop);
             imageShop = (ImageView) itemView.findViewById(R.id.image_shop);
             cardShop = (CardView) itemView.findViewById(R.id.cardview_shop);
+
 
         }
     }

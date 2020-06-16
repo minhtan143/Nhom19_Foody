@@ -1,6 +1,7 @@
 package hcmte.edu.vn.Nhom19;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,14 +36,15 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-//        holder.txtName.setText(listFood.get(position).getName());
-//        holder.imgFood.setImageResource(listFood.get(position).getThumbnail());
-//        holder.setItemClickListener(new ItemClickListener() {
-//            @Override
-//            public void onClick(View view, int position, boolean isLongClick) {
-//
-//            }
-//        });
+        holder.txtName.setText(listFood.get(position).getTenMonAn());
+        byte[] img = listFood.get(position).getHinhAnh();
+        holder.imgFood.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.length));
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
+
+            }
+        });
     }
 
     @Override

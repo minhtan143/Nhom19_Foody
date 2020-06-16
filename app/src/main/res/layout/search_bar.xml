@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:orientation="horizontal"
-    android:background="@drawable/search_round">
+    android:background="@drawable/bg_search_round">
 
     <Button
         android:id="@+id/btn_search"
@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:layout_weight="8"
         android:hint="Tìm địa điểm, món ăn, địa chỉ..."
-        android:background="@drawable/edit_text"
+        android:background="@drawable/bg_edit_text"
         android:textSize="15dp"
         android:paddingLeft="10dp"/>
 

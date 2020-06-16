@@ -56,7 +56,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/search_place"
+            android:background="@drawable/bg_search_place"
             android:layout_marginHorizontal="5dp"
             android:layout_marginVertical="7dp">
             <EditText
@@ -66,7 +66,7 @@
                 android:hint="Tìm tỉnh thành"
                 android:drawableLeft="@drawable/search"
                 android:drawablePadding="10dp"
-                android:background="@drawable/edit_text"
+                android:background="@drawable/bg_edit_text"
                 android:textSize="15dp"
                 android:paddingLeft="10dp"/>
         </LinearLayout>

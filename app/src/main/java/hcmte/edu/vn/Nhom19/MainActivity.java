@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         database = new Database(this, "Foody.sqlite", null, 1);
 
-        listQuanAn = database.GetQuanAn("ABC");
+        listQuanAn = database.GetQuanAn();
 
         RecyclerView myRecycler =(RecyclerView) findViewById(R.id.recyclerview_list_shop);
         RecyclerAdapter myAdapter = new RecyclerAdapter(this, listQuanAn);

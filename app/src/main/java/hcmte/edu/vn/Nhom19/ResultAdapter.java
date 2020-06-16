@@ -2,6 +2,7 @@ package hcmte.edu.vn.Nhom19;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,18 +33,19 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-//        holder.txtDistanceShop.setText(String.valueOf(listQuanAn.get(position).getDistance())  + "km");
-//        holder.txtAddressShop.setText((listQuanAn.get(position).getAddress()));
-//        holder.txtRateShop.setText(String.valueOf(listQuanAn.get(position).getRate()));
-//        holder.txtNameShop.setText(listQuanAn.get(position).getName());
-//        holder.imgShop.setImageResource(listQuanAn.get(position).getThumbnail());
-//        holder.setItemClickListener(new ItemClickListener() {
-//            @Override
-//            public void onClick(View view, int position, boolean isLongClick) {
-//                Intent intent = new Intent(context, DetailActivity.class);
-//                context.startActivity(intent);
-//            }
-//        });
+        holder.txtDistanceShop.setText("10km");
+        holder.txtAddressShop.setText((listQuanAn.get(position).getDiaChi()));
+        holder.txtRateShop.setText(String.valueOf(6.5));
+        holder.txtNameShop.setText(listQuanAn.get(position).getTenQuanAn());
+        byte[] img = listQuanAn.get(position).getHinhAnh();
+        holder.imgShop.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.length));
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

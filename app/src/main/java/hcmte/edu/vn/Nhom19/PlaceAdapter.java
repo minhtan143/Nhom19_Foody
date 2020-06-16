@@ -31,7 +31,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        //holder.txtPlaceName.setText(listPlace.get(position));
+        holder.txtPlaceName.setText(listTinhThanh.get(position).getTenTinh());
     }
 
     @Override

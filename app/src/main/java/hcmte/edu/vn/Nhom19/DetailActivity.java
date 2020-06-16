@@ -18,7 +18,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        listThucDon = MainActivity.database.GetThucDon("ABC");
+        listThucDon = MainActivity.database.GetThucDon(1);
 
         RecyclerView myRecycler = (RecyclerView) findViewById(R.id.recyclerview_list_food);
         DetailAdapter myAdapter = new DetailAdapter(this, listThucDon);
