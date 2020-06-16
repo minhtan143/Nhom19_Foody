@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="130dp"
     android:orientation="horizontal"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="@android:color/transparent"
     app:cardElevation="0dp"
-    android:clickable="true">
+    android:clickable="true"
+    tools:ignore="RtlCompat">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,17 +48,6 @@
                     android:textStyle="bold"
                     android:gravity="center_vertical"/>
 
-                <TextView
-                    android:id="@+id/txt_result_rate_shop"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:text="6.5"
-                    android:textColor="#DAA520"
-                    android:gravity="center_vertical"
-                    android:textAlignment="viewEnd"
-                    android:textSize="20dp"
-                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -105,41 +96,11 @@
                     android:textAlignment="viewEnd"
                     android:text="18"
                     android:textColor="@android:color/black"
-                    android:drawableLeft="@drawable/comment"
-                    android:paddingLeft="10dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:textAlignment="viewEnd"
-                    android:text="18"
-                    android:textColor="@android:color/black"
                     android:drawableLeft="@drawable/photo_camera"
                     android:paddingLeft="10dp"/>
 
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Mã khuyến mãi"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_vertical"
-                    android:drawableLeft="@drawable/now"
-                    android:drawablePadding="5dp" />
-            </LinearLayout>
-
-
-
         </LinearLayout>
     </LinearLayout>
 

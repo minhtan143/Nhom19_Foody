@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     public static Database database;
     TextView txtChoosePlace;
@@ -26,42 +26,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         database = new Database(this, "Foody.sqlite", null, 1);
 
-        listQuanAn = database.GetQuanAn();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            listQuanAn = database.GetQuanAn(bundle.getInt(Constants.KEY_PLACE_ID));
+        } else {
+            listQuanAn = database.GetQuanAn();
+        }
 
         RecyclerView myRecycler =(RecyclerView) findViewById(R.id.recyclerview_list_shop);
-        RecyclerAdapter myAdapter = new RecyclerAdapter(this, listQuanAn);
+        QuanAnAdapter myAdapter = new QuanAnAdapter(this, listQuanAn);
         myRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         myRecycler.setAdapter(myAdapter);
 
         txtChoosePlace = (TextView) findViewById(R.id.txt_choose_place);
-        txtChoosePlace.setOnClickListener(this);
-
-        btnSearch = (Button) findViewById(R.id.btn_search);
-        btnSearch.setOnClickListener(this);
-
-
-    }
-
-    @Override
-    public void onClick(View view) {
-        try {
-            switch (view.getId()){
-                case R.id.txt_choose_place:
-                {
-                    Intent intent = new Intent(MainActivity.this, PlaceActivity.class);
-                    startActivity(intent);
-                    break;
-                }
-                case R.id.btn_search:
-                {
-                    Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-                    startActivity(intent);
-                    break;
-                }
+        txtChoosePlace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PlaceActivity.class);
+                startActivity(intent);
             }
-        }
-        catch (Exception e) {
-
-        }
+        });
     }
 }

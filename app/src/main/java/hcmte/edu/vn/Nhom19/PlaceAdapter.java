@@ -1,6 +1,7 @@
 package hcmte.edu.vn.Nhom19;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +31,16 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.txtPlaceName.setText(listTinhThanh.get(position).getTenTinh());
+        holder.txtPlaceName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.putExtra(Constants.KEY_PLACE_ID, listTinhThanh.get(position).getMaTinh());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -45,7 +54,6 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.MyViewHolder
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
             txtPlaceName = (TextView) itemView.findViewById(R.id.txt_name_place);
         }
     }

@@ -71,6 +71,21 @@ public class Database extends SQLiteOpenHelper {
         return listQuanAn;
     }
 
+    public QuanAn GetQuanAnByID(int maQuanAn) {
+
+        Cursor cursor = GetData("SELECT * FROM QuanAn WHERE MaQuanAn = " + maQuanAn);
+        cursor.moveToNext();
+        return new QuanAn(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getString(4),
+                cursor.getBlob(5),
+                cursor.getInt(6)
+        );
+    }
+
     public List<TinhThanh> GetTinhThanh() {
         List<TinhThanh> listTinhThanh = new ArrayList<>();
 
@@ -95,7 +110,8 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getString(1),
                     cursor.getInt(2),
                     cursor.getBlob(3),
-                    cursor.getInt(4)
+                    cursor.getInt(4),
+                    cursor.getInt(5)
             ));
         }
 
@@ -213,13 +229,15 @@ class ThucDon {
     private String tenMonAn;
     private int gia;
     private byte[] hinhAnh;
+    private int maLoai;
     private int maQuanAn;
 
-    public ThucDon(int maThucDon, String tenMonAn, int gia, byte[] hinhAnh, int maQuanAn) {
+    public ThucDon(int maThucDon, String tenMonAn, int gia, byte[] hinhAnh, int maLoai, int maQuanAn) {
         this.maThucDon = maThucDon;
         this.tenMonAn = tenMonAn;
         this.gia = gia;
         this.hinhAnh = hinhAnh;
+        this.maLoai = maLoai;
         this.maQuanAn = maQuanAn;
     }
 
@@ -253,6 +271,14 @@ class ThucDon {
 
     public void setHinhAnh(byte[] hinhAnh) {
         this.hinhAnh = hinhAnh;
+    }
+
+    public int getMaLoai() {
+        return maLoai;
+    }
+
+    public void setMaLoai(int maLoai) {
+        this.maLoai = maLoai;
     }
 
     public int getMaQuanAn() {
@@ -333,6 +359,32 @@ class Wifi {
 
     public void setMaQuanAn(int maQuanAn) {
         this.maQuanAn = maQuanAn;
+    }
+}
+
+class LoaiDoAn {
+    private int maLoai;
+    private String tenLoai;
+
+    public LoaiDoAn(int maLoai, String tenLoai) {
+        this.maLoai = maLoai;
+        this.tenLoai = tenLoai;
+    }
+
+    public int getMaLoai() {
+        return maLoai;
+    }
+
+    public void setMaLoai(int maLoai) {
+        this.maLoai = maLoai;
+    }
+
+    public String getTenLoai() {
+        return tenLoai;
+    }
+
+    public void setTenLoai(String tenLoai) {
+        this.tenLoai = tenLoai;
     }
 }
 

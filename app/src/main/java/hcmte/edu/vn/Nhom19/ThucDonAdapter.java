@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHolder> {
+public class ThucDonAdapter extends RecyclerView.Adapter<ThucDonAdapter.MyViewHolder> {
 
     private Context context;
     private List<ThucDon> listFood;
 
-    public DetailAdapter(Context context, List<ThucDon> listFood) {
+    public ThucDonAdapter(Context context, List<ThucDon> listFood) {
         this.context = context;
         this.listFood = listFood;
     }
@@ -30,7 +30,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHold
         View view;
         LayoutInflater mInflater = LayoutInflater.from(context);
         view = mInflater.inflate(R.layout.cardview_food, parent, false);
-        return new DetailAdapter.MyViewHolder(view);
+        return new ThucDonAdapter.MyViewHolder(view);
 
     }
 

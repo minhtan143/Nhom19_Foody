@@ -1,7 +1,9 @@
 package hcmte.edu.vn.Nhom19;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
+public class QuanAnAdapter extends RecyclerView.Adapter<QuanAnAdapter.MyViewHolder> {
 
     private Context context;
     private List<QuanAn> listQuanAn;
 
-    public RecyclerAdapter (Context context, List<QuanAn> listQuanAn) {
+    public QuanAnAdapter(Context context, List<QuanAn> listQuanAn) {
         this.context = context;
         this.listQuanAn = listQuanAn;
     }
@@ -32,11 +34,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.txtShopName.setText(listQuanAn.get(position).getTenQuanAn());
-        holder.txtShopDetail.setText("Cai gi do");
+        holder.txtShopDetail.setText(listQuanAn.get(position).getTenQuanAn());
+
         byte[] img = listQuanAn.get(position).getHinhAnh();
         holder.imageShop.setImageBitmap(BitmapFactory.decodeByteArray(img,0, img.length));
+
+        holder.cardShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra(Constants.KEY_SHOP_ID, listQuanAn.get(position).getMaQuanAn());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -57,8 +69,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             txtShopDetail = (TextView) itemView.findViewById(R.id.txt_detail_shop);
             imageShop = (ImageView) itemView.findViewById(R.id.image_shop);
             cardShop = (CardView) itemView.findViewById(R.id.cardview_shop);
-
-
         }
     }
 }

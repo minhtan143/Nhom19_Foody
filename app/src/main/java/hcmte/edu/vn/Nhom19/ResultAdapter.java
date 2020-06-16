@@ -35,7 +35,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.txtDistanceShop.setText("10km");
         holder.txtAddressShop.setText((listQuanAn.get(position).getDiaChi()));
-        holder.txtRateShop.setText(String.valueOf(6.5));
         holder.txtNameShop.setText(listQuanAn.get(position).getTenQuanAn());
         byte[] img = listQuanAn.get(position).getHinhAnh();
         holder.imgShop.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.length));
@@ -63,7 +62,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
             super(itemView);
 
             txtNameShop = (TextView) itemView.findViewById(R.id.txt_result_name_shop);
-            txtRateShop = (TextView) itemView.findViewById(R.id.txt_result_rate_shop);
             txtAddressShop = (TextView) itemView.findViewById(R.id.txt_result_address_shop);
             txtDistanceShop = (TextView) itemView.findViewById(R.id.txt_result_distance_shop);
             imgShop = (ImageView) itemView.findViewById(R.id.image_result_shop);
