@@ -14,7 +14,6 @@
         android:theme="@style/AppTheme">
         <activity android:name="hcmte.edu.vn.Nhom19.MenuActivity"></activity>
         <activity android:name="hcmte.edu.vn.Nhom19.DetailActivity" />
-        <activity android:name="hcmte.edu.vn.Nhom19.ResultActivity" />
         <activity android:name="hcmte.edu.vn.Nhom19.PlaceActivity" />
         <activity android:name="hcmte.edu.vn.Nhom19.MainActivity">
             <intent-filter>

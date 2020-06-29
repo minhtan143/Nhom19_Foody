@@ -23,9 +23,10 @@ public class PlaceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place);
 
-        listTinhThanh = MainActivity.database.GetTinhThanh();
-
-        show();
+        try {
+            listTinhThanh = MainActivity.database.GetTinhThanh();
+            show();
+        } catch (Exception ignored) { }
 
         findViewById(R.id.txt_cancel).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,12 +56,14 @@ public class PlaceActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 String searchString = edt_search_place.getText().toString();
 
-                if (!searchString.isEmpty()) {
-                    listTinhThanh = MainActivity.database.GetTinhThanh(searchString);
-                } else {
-                    listTinhThanh = MainActivity.database.GetTinhThanh();
-                }
-                show();
+                try {
+                    if (!searchString.isEmpty()) {
+                        listTinhThanh = MainActivity.database.GetTinhThanh(searchString);
+                    } else {
+                        listTinhThanh = MainActivity.database.GetTinhThanh();
+                    }
+                    show();
+                } catch (Exception ignored) { }
             }
         });
     }

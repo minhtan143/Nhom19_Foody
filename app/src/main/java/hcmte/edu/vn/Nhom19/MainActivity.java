@@ -41,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
         if (bundle != null) {
             placeId = bundle.getInt(Constants.KEY_PLACE_ID);
         }
-        txtChoosePlace.setText(database.GetTinhThanhByID(placeId).getTenTinh());
-        listQuanAn = database.GetQuanAn(placeId);
-
-        show();
+        try {
+            txtChoosePlace.setText(database.GetTinhThanhByID(placeId).getTenTinh());
+            listQuanAn = database.GetQuanAn(placeId);
+            show();
+        }
+        catch (Exception ignored) { }
 
         txtChoosePlace.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
     private void searchEvent() {
         String searchString = edt_search_shop.getText().toString();
 
-        if (!searchString.isEmpty()) {
-            listQuanAn = database.GetQuanAn(placeId, searchString);
-            showResult();
-        } else {
-            listQuanAn = database.GetQuanAn(placeId);
-            show();
-        }
+        try {
+            if (!searchString.isEmpty()) {
+                listQuanAn = database.GetQuanAn(placeId, searchString);
+                showResult();
+            } else {
+                listQuanAn = database.GetQuanAn(placeId);
+                show();
+            }
+        } catch (Exception ignored) { }
     }
-
-
 }
