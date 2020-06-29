@@ -100,6 +100,12 @@ public class Database extends SQLiteOpenHelper {
         return listTinhThanh;
     }
 
+    public TinhThanh GetTinhThanhByID(int maTinhThanh) {
+        Cursor cursor = GetData("SELECT * FROM TinhThanh WHERE MaTinh = " + maTinhThanh);
+        cursor.moveToNext();
+        return new TinhThanh(cursor.getInt(0), cursor.getString(1));
+    }
+
     public List<ThucDon> GetThucDon(int maQuanAn) {
         List<ThucDon> listThucDon = new ArrayList<>();
 

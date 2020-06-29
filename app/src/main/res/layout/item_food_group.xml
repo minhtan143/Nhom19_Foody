@@ -4,12 +4,14 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/txt_name_food_group"
+        android:id="@+id/txt_item_food_group"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
+        android:textSize="18dp"
         android:text="gi do"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:textStyle="bold"
+        android:background="#BDBDBD"
         android:layout_margin="10dp"/>
 </LinearLayout>

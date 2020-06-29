@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:text="gi do"
+        android:textSize="18dp"
         android:layout_margin="10dp"/>
 </LinearLayout>

@@ -7,14 +7,16 @@
 //import android.widget.BaseExpandableListAdapter;
 //import android.widget.TextView;
 //
+//import java.util.HashMap;
 //import java.util.List;
 //
 //public class ExpandableFoodGroupAdapter extends BaseExpandableListAdapter {
 //
 //    private Context context;
-//    private List<FoodGroup> listFoodGroup;
+//    private List<LoaiDoAn> listFoodGroup;
+//    private HashMap<String, List<ThucDon>> listFood;
 //
-//    public ExpandableFoodGroupAdapter(Context context, List<FoodGroup> listFoodGroup) {
+//    public ExpandableFoodGroupAdapter(Context context, List<LoaiDoAn> listFoodGroup) {
 //        this.context = context;
 //        this.listFoodGroup = listFoodGroup;
 //    }
