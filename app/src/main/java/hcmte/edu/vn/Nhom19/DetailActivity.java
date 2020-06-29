@@ -150,11 +150,11 @@ public class DetailActivity extends AppCompatActivity {
 
     public float distance(String address) {
 
-        Location currentLocation = getCurrentLocation();
+        getCurrentLocation();
         Location location = getLocation(address);
 
-        if (currentLocation != null && location != null) {
-            Float distance = currentLocation.distanceTo(location);
+        if (Constants.myLocation != null && location != null) {
+            float distance = Constants.myLocation.distanceTo(location);
             distance = Math.round(distance / 100) / 10f;
             return distance;
         }
@@ -162,26 +162,22 @@ public class DetailActivity extends AppCompatActivity {
         return 0;
     }
 
-    private Location getCurrentLocation() {
-        final Location[] myLocation = {null};
+    private void getCurrentLocation() {
         FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
-        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-        List<Address> addresses;
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return null;
+            return;
         }
         Task<Location> task = client.getLastLocation();
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
-                    myLocation[0] = location;
+                    Constants.myLocation.setLatitude(location.getLatitude());
+                    Constants.myLocation.setLongitude(location.getLongitude());
                 }
             }
         });
-
-        return myLocation[0];
     }
 
     private Location getLocation(String address) {
