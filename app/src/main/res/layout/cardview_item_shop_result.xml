@@ -9,20 +9,20 @@
     app:cardBackgroundColor="@android:color/transparent"
     app:cardElevation="0dp"
     android:clickable="true"
-    tools:ignore="RtlCompat">
+    tools:ignore="RtlCompat, NestedWeights, RtlSymmetry">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_item_list"
-        >
+        android:background="@drawable/bg_item_list">
 
         <ImageView
             android:id="@+id/image_result_shop"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,14 +46,25 @@
                     android:textColor="@android:color/black"
                     android:textSize="18dp"
                     android:textStyle="bold"
-                    android:gravity="center_vertical"/>
+                    android:gravity="center_vertical" />
 
+                <TextView
+                    android:id="@+id/txt_result_rate_shop"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="6.5"
+                    android:textColor="#DAA520"
+                    android:gravity="center_vertical"
+                    android:textAlignment="viewEnd"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:orientation="horizontal">
 
                 <TextView
@@ -89,6 +100,21 @@
                     android:textColor="@android:color/black"/>
 
                 <TextView
+                    android:id="@+id/txt_result_comment"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textAlignment="viewEnd"
+                    android:text="18"
+                    android:textColor="@android:color/black"
+                    android:drawableLeft="@drawable/comment"
+                    android:paddingLeft="10dp"
+                    android:drawableStart="@drawable/comment"
+                    android:paddingStart="10dp"/>
+
+                <TextView
+                    android:id="@+id/txt_result_picture"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -97,9 +123,28 @@
                     android:text="18"
                     android:textColor="@android:color/black"
                     android:drawableLeft="@drawable/photo_camera"
-                    android:paddingLeft="10dp"/>
+                    android:paddingLeft="10dp"
+                    android:drawableStart="@drawable/photo_camera"
+                    android:paddingStart="10dp" />
 
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Mã khuyến mãi"
+                    android:textColor="@android:color/black"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/now"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/now" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

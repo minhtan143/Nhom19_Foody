@@ -71,6 +71,25 @@ public class Database extends SQLiteOpenHelper {
         return listQuanAn;
     }
 
+    public List<QuanAn> GetQuanAn(int maTinhThanh, String searchString) {
+        List<QuanAn> listQuanAn = new ArrayList<>();
+
+        Cursor cursor = GetData("SELECT * FROM QuanAn WHERE MaTinh = " + maTinhThanh + " AND (TenQuanAn LIKE '%" + searchString.toLowerCase() + "%' OR DiaChi LIKE '%" + searchString.toLowerCase() + "%')");
+        while (cursor.moveToNext()) {
+            listQuanAn.add(new QuanAn(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getBlob(5),
+                    cursor.getInt(6)
+            ));
+        }
+
+        return listQuanAn;
+    }
+
     public QuanAn GetQuanAnByID(int maQuanAn) {
 
         Cursor cursor = GetData("SELECT * FROM QuanAn WHERE MaQuanAn = " + maQuanAn);
@@ -90,6 +109,20 @@ public class Database extends SQLiteOpenHelper {
         List<TinhThanh> listTinhThanh = new ArrayList<>();
 
         Cursor cursor = GetData("SELECT * FROM TinhThanh");
+        while (cursor.moveToNext()) {
+            listTinhThanh.add(new TinhThanh(
+                    cursor.getInt(0),
+                    cursor.getString(1)
+            ));
+        }
+
+        return listTinhThanh;
+    }
+
+    public List<TinhThanh> GetTinhThanh(String searchString) {
+        List<TinhThanh> listTinhThanh = new ArrayList<>();
+
+        Cursor cursor = GetData("SELECT * FROM TinhThanh WHERE TenTinh LIKE '%" + searchString + "%'");
         while (cursor.moveToNext()) {
             listTinhThanh.add(new TinhThanh(
                     cursor.getInt(0),

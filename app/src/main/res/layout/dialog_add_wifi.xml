@@ -9,6 +9,7 @@
 
 
     <EditText
+        android:id="@+id/edt_wifi_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/bg_edit_text_wifi"
@@ -19,6 +20,7 @@
         android:drawablePadding="10dp"/>
 
     <EditText
+        android:id="@+id/edt_wifi_pass"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -30,11 +32,12 @@
         android:drawablePadding="10dp"/>
 
     <Button
+        android:id="@+id/btn_add_wifi_dialog"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:textSize="18dp"
         android:background="@drawable/bg_button_add_wifi"
-        android:text="Cập nhật Wifi Password"
+        android:text="Thêm Wifi"
         android:textColor="@android:color/white"/>
 </LinearLayout>

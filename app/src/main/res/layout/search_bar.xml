@@ -16,6 +16,7 @@
         android:paddingLeft="10dp"/>
 
     <EditText
+        android:id="@+id/edt_search_shop"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="8"
