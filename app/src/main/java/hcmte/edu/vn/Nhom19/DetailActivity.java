@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -53,6 +54,21 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn_add_wifi).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogAddWifi();
+            }
+        });
+
+
+    }
+
+    void showDialogAddWifi() {
+        Dialog dialog = new Dialog(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
+        dialog.setContentView(R.layout.dialog_add_wifi);
+
+        dialog.show();
     }
 
     void initElement(QuanAn quanAn) {

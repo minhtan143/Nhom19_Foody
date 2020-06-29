@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog_add_wifi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_edit_text_wifi"
+        android:hint="Tên wifi show sẵn nếu đã kết nối"
+        android:textSize="18dp"
+        android:drawableLeft="@drawable/internet"
+        android:paddingLeft="10dp"
+        android:drawablePadding="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_edit_text_wifi"
+        android:hint="Nhập mật khẩu"
+        android:textSize="18dp"
+        android:drawableLeft="@drawable/password"
+        android:paddingLeft="10dp"
+        android:drawablePadding="10dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"
+        android:background="@drawable/bg_button_add_wifi"
+        android:text="Cập nhật Wifi Password"
+        android:textColor="@android:color/white"/>
+</LinearLayout>

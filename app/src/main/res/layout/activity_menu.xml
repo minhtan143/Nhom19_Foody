@@ -32,13 +32,13 @@
                     android:id="@+id/btn_switch_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bg_btn_menu_unselected"
+                    android:background="@drawable/bg_btn_menu_selected"
                     android:text="Ảnh"/>
                 <Button
                     android:id="@+id/btn_switch_menu"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bg_btn_menu_selected"
+                    android:background="@drawable/bg_btn_menu_unselected"
                     android:text="Thực đơn"/>
 
             </LinearLayout>
