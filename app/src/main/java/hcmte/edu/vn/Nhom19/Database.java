@@ -157,6 +157,41 @@ public class Database extends SQLiteOpenHelper {
         return listThucDon;
     }
 
+    public List<LoaiDoAn> GetLoaiDoAn(int maQuanAn) {
+        List<LoaiDoAn> listLoaiDoAn = new ArrayList<>();
+
+        Cursor cursor = GetData("SELECT DISTINCT MaLoai FROM ThucDon WHERE MaQuanAn = " + maQuanAn);
+        while (cursor.moveToNext()) {
+            listLoaiDoAn.add(GetLoaiDoAnByID(cursor.getInt(0)));
+        }
+
+        return listLoaiDoAn;
+    }
+
+    public LoaiDoAn GetLoaiDoAnByID(int maLoai) {
+        Cursor cursor = GetData("SELECT * FROM LoaiDoAn WHERE MaLoai = " + maLoai);
+        cursor.moveToNext();
+        return new LoaiDoAn(cursor.getInt(0), cursor.getString(1));
+    }
+
+    public ArrayList<ThucDon> GetThucDon(int maQuanAn, int maLoai) {
+        ArrayList<ThucDon> listThucDon = new ArrayList<>();
+
+        Cursor cursor = GetData("SELECT * FROM ThucDon WHERE MaQuanAn = " + maQuanAn + " AND MaLoai = " + maLoai);
+        while (cursor.moveToNext()) {
+            listThucDon.add(new ThucDon(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getBlob(3),
+                    cursor.getInt(4),
+                    cursor.getInt(5)
+            ));
+        }
+
+        return listThucDon;
+    }
+
     public List<Wifi> GetWifi(int maQuanAn) {
         List<Wifi> listWifi = new ArrayList<>();
 

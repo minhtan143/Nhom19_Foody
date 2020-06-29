@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
@@ -18,6 +22,8 @@ public class MenuActivity extends AppCompatActivity {
     private ExpandableListView lvMenu;
     private QuanAn quanAn;
     List<ThucDon> listThucDon;
+    ArrayList<String> alHeader = new ArrayList<>();
+    HashMap<String, ArrayList<ThucDon>> hmItem = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +35,6 @@ public class MenuActivity extends AppCompatActivity {
 
         initElement(quanAn);
 
-        assert quanAn != null;
-        listThucDon = MainActivity.database.GetThucDon(quanAn.getMaQuanAn());
-
         RecyclerView myRecycler = (RecyclerView) findViewById(R.id.recyclerview_list_image);
         ThucDonAdapter myAdapter = new ThucDonAdapter(this, listThucDon);
         myRecycler.setLayoutManager(new GridLayoutManager(this, 2));
@@ -41,6 +44,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, DetailActivity.class);
+                intent.putExtra(Constants.KEY_SHOP_ID, quanAn.getMaQuanAn());
                 startActivity(intent);
             }
         });
@@ -74,6 +78,9 @@ public class MenuActivity extends AppCompatActivity {
 
                 recyclerView.setVisibility(View.GONE);
                 expandableListView.setVisibility(View.VISIBLE);
+
+                ExpandableListAdapter expandableListAdapter = new ExpandableListViewAdapter(MenuActivity.this, alHeader, hmItem);
+                expandableListView.setAdapter(expandableListAdapter);
             }
         });
     }
@@ -81,5 +88,15 @@ public class MenuActivity extends AppCompatActivity {
     void initElement(QuanAn quanAn) {
         TextView txtNameShop = (TextView) findViewById(R.id.txt_menu_name_shop);
         txtNameShop.setText(quanAn.getTenQuanAn());
+
+        assert quanAn != null;
+        listThucDon = MainActivity.database.GetThucDon(quanAn.getMaQuanAn());
+
+        List<LoaiDoAn> loaiDoAns = MainActivity.database.GetLoaiDoAn(quanAn.getMaQuanAn());
+
+        for (LoaiDoAn i: loaiDoAns) {
+            alHeader.add(i.getTenLoai());
+            hmItem.put(i.getTenLoai(), MainActivity.database.GetThucDon(quanAn.getMaQuanAn(), i.getMaLoai()));
+        }
     }
 }
