@@ -26,6 +26,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_edit_text_wifi"
         android:hint="Nhập mật khẩu"
+        android:inputType="textPassword"
         android:textSize="18dp"
         android:drawableLeft="@drawable/password"
         android:paddingLeft="10dp"
