@@ -50,6 +50,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
+        holder.txtDistanceShop.setText("...km");
         new Thread(new Runnable() {
             public void run() {
                 holder.txtDistanceShop.setText(distance(listQuanAn.get(position).getDiaChi()) + "km");
@@ -128,6 +129,9 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
     }
 
     private void getCurrentLocation() {
+        Constants.myLocation.setLatitude(10.850736);
+        Constants.myLocation.setLongitude(106.771900);
+
         FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(context);
 
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -147,7 +151,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
 
     private Location getLocation(String address) {
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-        List<Address> addresses = null;
+        List<Address> addresses;
         Location location = null;
 
         try {

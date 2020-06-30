@@ -125,6 +125,8 @@ public class DetailActivity extends AppCompatActivity {
         txtTimeInTimeOut.setText(quanAn.getGioMoCua() + " - " + quanAn.getGioDongCua());
         txtOpened.setText(status(quanAn.getGioMoCua(), quanAn.getGioDongCua()));
 
+        txtDetailDistance.setText("...km (Từ vị trí hiện tại)");
+
         new Thread(new Runnable() {
             public void run() {
                 txtDetailDistance.setText(distance(quanAn.getDiaChi()) + "km (Từ vị trí hiện tại)");
