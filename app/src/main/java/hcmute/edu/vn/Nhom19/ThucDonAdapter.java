@@ -1,4 +1,4 @@
-package hcmte.edu.vn.Nhom19;
+package hcmute.edu.vn.Nhom19;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -82,5 +82,4 @@ public class ThucDonAdapter extends RecyclerView.Adapter<ThucDonAdapter.MyViewHo
     public interface ItemClickListener {
         void onClick(View view, int position,boolean isLongClick);
     }
-
 }

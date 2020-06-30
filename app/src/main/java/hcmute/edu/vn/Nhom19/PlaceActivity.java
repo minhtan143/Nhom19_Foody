@@ -1,4 +1,4 @@
-package hcmte.edu.vn.Nhom19;
+package hcmute.edu.vn.Nhom19;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;

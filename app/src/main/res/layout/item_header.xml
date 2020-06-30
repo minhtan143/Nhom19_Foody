@@ -3,16 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/item_header"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textSize="25sp"
+        android:textSize="20dp"
+        android:gravity="center_vertical"
         android:padding="10dp"
         android:textColor="#6BC800"
         android:text="gi do"
+        android:layout_marginLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         tools:ignore="MissingConstraints" />
 
 </LinearLayout>

@@ -1,9 +1,8 @@
-package hcmte.edu.vn.Nhom19;
+package hcmute.edu.vn.Nhom19;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

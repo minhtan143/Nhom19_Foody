@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="hcmte.edu.vn.Nhom19">
+    package="hcmute.edu.vn.Nhom19">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="hcmte.edu.vn.Nhom19.MenuActivity"></activity>
-        <activity android:name="hcmte.edu.vn.Nhom19.DetailActivity" />
-        <activity android:name="hcmte.edu.vn.Nhom19.PlaceActivity" />
-        <activity android:name="hcmte.edu.vn.Nhom19.MainActivity">
+        <activity android:name="hcmute.edu.vn.Nhom19.MenuActivity"></activity>
+        <activity android:name="hcmute.edu.vn.Nhom19.DetailActivity" />
+        <activity android:name="hcmute.edu.vn.Nhom19.PlaceActivity" />
+        <activity android:name="hcmute.edu.vn.Nhom19.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

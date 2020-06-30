@@ -1,4 +1,4 @@
-package hcmte.edu.vn.Nhom19;
+package hcmute.edu.vn.Nhom19;
 
 import android.content.Context;
 import android.content.Intent;

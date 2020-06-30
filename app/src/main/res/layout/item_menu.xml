@@ -10,19 +10,21 @@
         android:id="@+id/item_menu_name"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:textSize="20sp"
+        android:textSize="18dp"
         android:padding="10dp"
         android:text="gi do"
+        android:layout_marginLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/item_menu_price"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:textSize="20sp"
+        android:textSize="18dp"
         android:padding="10dp"
         android:text="100,000"
         android:textColor="#1E3AD8"
+        android:layout_marginLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         tools:ignore="MissingConstraints" />
 
 </LinearLayout>
