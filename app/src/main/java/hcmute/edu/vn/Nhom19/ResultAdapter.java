@@ -129,9 +129,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
     }
 
     private void getCurrentLocation() {
-        Constants.myLocation.setLatitude(10.850736);
-        Constants.myLocation.setLongitude(106.771900);
-
         FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(context);
 
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

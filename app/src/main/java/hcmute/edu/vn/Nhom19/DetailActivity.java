@@ -163,9 +163,6 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void getCurrentLocation() {
-        Constants.myLocation.setLatitude(10.850736);
-        Constants.myLocation.setLongitude(106.771900);
-
         FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
