@@ -112,7 +112,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    private void initElement(QuanAn quanAn) {
+    private void initElement(final QuanAn quanAn) {
         txtAddress = (TextView) findViewById(R.id.txt_detail_address);
         txtName = (TextView) findViewById(R.id.txt_detail_name_shop);
         txtPlace = (TextView) findViewById(R.id.txt_detail_place);
@@ -124,7 +124,12 @@ public class DetailActivity extends AppCompatActivity {
         txtName.setText(quanAn.getTenQuanAn());
         txtTimeInTimeOut.setText(quanAn.getGioMoCua() + " - " + quanAn.getGioDongCua());
         txtOpened.setText(status(quanAn.getGioMoCua(), quanAn.getGioDongCua()));
-        txtDetailDistance.setText(distance(quanAn.getDiaChi()) + "km (Từ vị trí hiện tại)");
+
+        new Thread(new Runnable() {
+            public void run() {
+                txtDetailDistance.setText(distance(quanAn.getDiaChi()) + "km (Từ vị trí hiện tại)");
+            }
+        }).start();
 
         TinhThanh tinh = MainActivity.database.GetTinhThanhByID(quanAn.getMaTinh());
         txtPlace.setText(tinh.getTenTinh());

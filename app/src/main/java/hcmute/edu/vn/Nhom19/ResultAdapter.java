@@ -48,9 +48,14 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.txtDistanceShop.setText(distance(listQuanAn.get(position).getDiaChi()) + "km");
+        new Thread(new Runnable() {
+            public void run() {
+                holder.txtDistanceShop.setText(distance(listQuanAn.get(position).getDiaChi()) + "km");
+            }
+        }).start();
+
         holder.txtAddressShop.setText(listQuanAn.get(position).getDiaChi());
         holder.txtNameShop.setText(listQuanAn.get(position).getTenQuanAn());
         holder.txtRateShop.setText(Float.toString(new Random().nextInt(101) / 10f));
