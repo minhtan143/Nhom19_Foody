@@ -146,7 +146,7 @@ public class DetailActivity extends AppCompatActivity {
         getCurrentLocation();
         Location location = getLocation(address);
 
-        if (Constants.myLocation != null && location != null) {
+        if (location != null) {
             float distance = Constants.myLocation.distanceTo(location);
             distance = Math.round(distance / 100) / 10f;
             return distance;
@@ -156,6 +156,9 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void getCurrentLocation() {
+        Constants.myLocation.setLatitude(10.850736);
+        Constants.myLocation.setLongitude(106.771900);
+
         FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -175,7 +178,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private Location getLocation(String address) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-        List<Address> addresses = null;
+        List<Address> addresses;
         Location location = null;
 
         try {
